@@ -476,7 +476,7 @@ def watch():
     return render_template('blog/watch.html')
 
 
-
+db.create_all()
 
 if __name__=="__main__":
     app.run(debug=True)
