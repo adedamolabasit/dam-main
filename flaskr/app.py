@@ -312,7 +312,7 @@ def create_post():
     return render_template('blog/post_create.html')
 
 
-@app.route('/',method=['GET'])
+@app.route('/',methods=['GET'])
 def home():
     query1=Home.query.filter_by(id=1).first()
     query2=Home.query.filter_by(id=2).first()
