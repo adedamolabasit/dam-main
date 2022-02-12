@@ -1,8 +1,7 @@
 from datetime import date
 from werkzeug.utils import secure_filename
-from flaskr import app,db,mail
-from flask import render_template,request,abort,redirect,url_for,flash,request,jsonify
-from .models import Blog,Home,Knowledge,Post,Paragraph,User,PendUser,Comment,Like,Newsletter
+from flask import render_template,request,abort,redirect,url_for,flash,jsonify
+from flaskr.models import Blog,Home,Knowledge,Post,Paragraph,User,PendUser,Comment,Like,Newsletter
 from werkzeug.utils import secure_filename
 from sqlalchemy import desc 
 import os
@@ -14,13 +13,11 @@ from flask_admin.contrib.sqla import ModelView
 from flask_bcrypt import Bcrypt
 from PIL import Image
 import secrets
+from flaskr import app,mail,db,bcrypt
 
 
 
 
-
-bcrypt=Bcrypt(app)
-app.config['SECRET_KEY']='d8827d6ff69e5fc8d4792ba5'
 admin=Admin(app)
 class Controller(ModelView):
     def is_accessible(self):
@@ -42,6 +39,8 @@ admin.add_view(Controller(Post,db.session))
 admin.add_view(Controller(PendUser,db.session))
 admin.add_view(Controller(Comment,db.session))
 admin.add_view(Controller(Like,db.session))
+
+
 
 
 
@@ -475,3 +474,13 @@ def newsletter_token(token):
 @app.route('/watch')
 def watch():
     return render_template('blog/watch.html')
+
+
+
+
+if __name__=="__main__":
+    app.run(debug=True)
+    app.secret_key('ade')
+
+
+

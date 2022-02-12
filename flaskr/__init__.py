@@ -3,6 +3,7 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 from flask_login import LoginManager
+from flask_bcrypt import Bcrypt
 
 
 
@@ -17,6 +18,9 @@ app.config['MAIL_USE_TLS']=False
 app.config['MAIL_USE_SSL']=True
 app.config['MAIL_USERNAME']="adedamolabasit09@gmail.com"
 app.config['MAIL_PASSWORD']="Nautilus6he!"
+
+bcrypt=Bcrypt(app)
+app.config['SECRET_KEY']='d8827d6ff69e5fc8d4792ba5'
 
 mail=Mail(app)
 db = SQLAlchemy(app)

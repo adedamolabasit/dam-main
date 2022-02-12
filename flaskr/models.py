@@ -1,8 +1,9 @@
 from sqlalchemy.orm import backref
-from flaskr import app,db,login_manager
+from flaskr import db,login_manager,app
 from datetime import datetime, timezone
 from itsdangerous import Serializer, TimedJSONWebSignatureSerializer as Serializer
 from flask_login import UserMixin
+
 
 @login_manager.user_loader
 def load_user(user_id):
