@@ -11,7 +11,7 @@ from flask_admin import Admin
 
 app=Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://tpbzcowclxwsha:66b6d192b4265eb218cbcb032927db0b7683f57982601e5f42a2b3f17a0095ef@ec2-18-235-114-62.compute-1.amazonaws.com:5432/d53h490dvsraic'
+app.config['DATABASE_URI'] = 'postgres://tpbzcowclxwsha:66b6d192b4265eb218cbcb032927db0b7683f57982601e5f42a2b3f17a0095ef@ec2-18-235-114-62.compute-1.amazonaws.com:5432/d53h490dvsraic'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['MAIL_SERVER']='smtp.googlemail.com'
 app.config['MAIL_PORT']=465
