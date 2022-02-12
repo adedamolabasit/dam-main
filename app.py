@@ -18,163 +18,163 @@ from flaskr import app,mail,db,bcrypt
 
 
 
-# admin=Admin(app)
-# class Controller(ModelView):
-#     def is_accessible(self):
-#         if current_user:
-#             return current_user.is_authenticated
-#         # else:
-#         #     abort(422)
+admin=Admin(app)
+class Controller(ModelView):
+    def is_accessible(self):
+        if current_user:
+            return current_user.is_authenticated
+        # else:
+        #     abort(422)
       
 
-#     def not_auth(self):
-#         return " you are not authorized to use the admin dashboard "
+    def not_auth(self):
+        return " you are not authorized to use the admin dashboard "
 
-# admin.add_view(Controller(User,db.session))
-# admin.add_view(Controller(Blog,db.session))
-# admin.add_view(Controller(Home,db.session))
-# admin.add_view(Controller(Knowledge,db.session))
-# admin.add_view(Controller(Paragraph,db.session))
-# admin.add_view(Controller(Post,db.session))
-# admin.add_view(Controller(PendUser,db.session))
-# admin.add_view(Controller(Comment,db.session))
-# admin.add_view(Controller(Like,db.session))
-
-
+admin.add_view(Controller(User,db.session))
+admin.add_view(Controller(Blog,db.session))
+admin.add_view(Controller(Home,db.session))
+admin.add_view(Controller(Knowledge,db.session))
+admin.add_view(Controller(Paragraph,db.session))
+admin.add_view(Controller(Post,db.session))
+admin.add_view(Controller(PendUser,db.session))
+admin.add_view(Controller(Comment,db.session))
+admin.add_view(Controller(Like,db.session))
 
 
 
-# @app.route('/login',methods=['GET','POST'])
-# def login():
-#     if current_user.is_authenticated:
-#         return redirect(url_for('home')) 
-#     form=LoginForm()
-#     if request.method == 'POST':
-#         if form.validate_on_submit():
-#             email=form.email.data
-#             user=User.query.filter_by(email=email).first()
 
-#             if user:
-#                 if bcrypt.check_password_hash(user.password,form.password.data):
-#                     login_user(user,form.remeber.data)
-#                     next_page=request.args.get('next')
+
+@app.route('/login',methods=['GET','POST'])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('home')) 
+    form=LoginForm()
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            email=form.email.data
+            user=User.query.filter_by(email=email).first()
+
+            if user:
+                if bcrypt.check_password_hash(user.password,form.password.data):
+                    login_user(user,form.remeber.data)
+                    next_page=request.args.get('next')
                     
-#                     flash('User login successful','success')
-#                     return redirect(next_page) if next_page else redirect(url_for('home'))
-#                 else:             
-#                     flash("Login Unsuccessful.Please check email and password",'danger')
-#                     return redirect(url_for('login'))
+                    flash('User login successful','success')
+                    return redirect(next_page) if next_page else redirect(url_for('home'))
+                else:             
+                    flash("Login Unsuccessful.Please check email and password",'danger')
+                    return redirect(url_for('login'))
    
-#     return render_template('blog/login.html',form=form)
-# # registration
-# @app.route('/register',methods=['GET','POST'])
-# def register(): 
-#     if current_user.is_authenticated:
-#         return redirect(url_for('login')) 
-#     form=RegistrationForm()
-#     if request.method == 'POST':
-#         if form.validate_on_submit():     
-#             hashed_password=bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-#             username=form.username.data
-#             email=form.email.data
-#             if email and hashed_password:
-#                 user=PendUser(username=username,password=hashed_password,email=email)
+    return render_template('blog/login.html',form=form)
+# registration
+@app.route('/register',methods=['GET','POST'])
+def register(): 
+    if current_user.is_authenticated:
+        return redirect(url_for('login')) 
+    form=RegistrationForm()
+    if request.method == 'POST':
+        if form.validate_on_submit():     
+            hashed_password=bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+            username=form.username.data
+            email=form.email.data
+            if email and hashed_password:
+                user=PendUser(username=username,password=hashed_password,email=email)
                 
 
-#                 db.session.add(user)
-#                 db.session.commit()  
-#                 comfirm_email(user)
-#                 flash(f'A mail has been sent to the email address you entered .Confirm your email by clicking the link that was sent to your email .Thank your','success')
-#                 return redirect(url_for('login'))
-#     if request.method == 'GET':
+                db.session.add(user)
+                db.session.commit()  
+                comfirm_email(user)
+                flash(f'A mail has been sent to the email address you entered .Confirm your email by clicking the link that was sent to your email .Thank your','success')
+                return redirect(url_for('login'))
+    if request.method == 'GET':
         
-#          return render_template('blog/sign-up-2.html',form=form)
-#     return render_template('blog/sign-up-2.html',form=form)
+         return render_template('blog/sign-up-2.html',form=form)
+    return render_template('blog/sign-up-2.html',form=form)
 
-# @app.route('/logout',methods=['GET','POST'])
-# @login_required
-# def logout():   
-#     logout_user()
-#     flash('logged out ','successful')
-#     return redirect(url_for('home'))
+@app.route('/logout',methods=['GET','POST'])
+@login_required
+def logout():   
+    logout_user()
+    flash('logged out ','successful')
+    return redirect(url_for('home'))
 
-# # start email confirmation during registration
-# def comfirm_email(user):
-#     token=user.get_verify_email_token()
-#     msg = Message('Confirm Username',
-#     sender='noreply@demo.com',
-#     recipients=[user.email])
-#     msg.body=f'''confirm your email:
-#     {url_for('email_token',token=token,_external=True)}
-#     we want to confirm if this mail is yours 
-#     '''
-#     mail.send(msg)
+# start email confirmation during registration
+def comfirm_email(user):
+    token=user.get_verify_email_token()
+    msg = Message('Confirm Username',
+    sender='noreply@demo.com',
+    recipients=[user.email])
+    msg.body=f'''confirm your email:
+    {url_for('email_token',token=token,_external=True)}
+    we want to confirm if this mail is yours 
+    '''
+    mail.send(msg)
 
 
-# @app.route('/email/<token>',methods=['GET','POST'])
-# def email_token(token):
-#     if current_user.is_authenticated:
-#         return redirect(url_for('home'))
-#     user=PendUser.verify_email_token(token)
-#     if user is None:
-#         flash('this is an invalid token or expired token ')
-#         return redirect(url_for('register'))
+@app.route('/email/<token>',methods=['GET','POST'])
+def email_token(token):
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    user=PendUser.verify_email_token(token)
+    if user is None:
+        flash('this is an invalid token or expired token ')
+        return redirect(url_for('register'))
 
-#     if user:
-#         email=user.email
-#         password=user.password
-#         username=user.username
-#         confirm_password=User(username=username,password=password,email=email)
-#         db.session.add(confirm_password)
-#         db.session.commit()
-#         flash('Email Confirmed')
-#         return redirect(url_for('home'))
-# # end of email confirmation during registration
+    if user:
+        email=user.email
+        password=user.password
+        username=user.username
+        confirm_password=User(username=username,password=password,email=email)
+        db.session.add(confirm_password)
+        db.session.commit()
+        flash('Email Confirmed')
+        return redirect(url_for('home'))
+# end of email confirmation during registration
 
-# # start of forgot password verification
-# def send_reset_email(user):
-#     token=user.get_reset_token()
-#     msg = Message('Password Rest Request',
-#     sender='noreply@nautilus.com',
-#     recipients=[user.email])
-#     msg.body=f'''to reset your password ,visit the following link:
-#     {url_for('reset_token',token=token,_external=True)}
-#     if  you did not make this request then simply ignore this email and no changes will be made
-#     '''
-#     mail.send(msg)
+# start of forgot password verification
+def send_reset_email(user):
+    token=user.get_reset_token()
+    msg = Message('Password Rest Request',
+    sender='noreply@nautilus.com',
+    recipients=[user.email])
+    msg.body=f'''to reset your password ,visit the following link:
+    {url_for('reset_token',token=token,_external=True)}
+    if  you did not make this request then simply ignore this email and no changes will be made
+    '''
+    mail.send(msg)
 
    
-# @app.route('/reset_password',methods=['GET','POST'])
-# def reset_request():
-#     if current_user.is_authenticated:
-#         return redirect(url_for('home'))
-#     form=RequestResetForm()
-#     if form.validate_on_submit():
-#         email=form.email.data
-#         user=User.query.filter_by(email=email).first()
-#         send_reset_email(user)
-#         flash('An email has been sent with instructions to reset your password','success')
-#         return redirect(url_for('login'))
-#     return render_template('blog/reset_request.html',title="reset password",form=form)
-# @app.route('/reset_password/<token>',methods=['GET','POST'])
-# def reset_token(token):
-#     if current_user.is_authenticated:
-#         return redirect(url_for('home'))
-#     user=User.verify_reset_token(token)
-#     if user is None:
-#         flash('this is an invalid token or expired token','danger')
-#         return redirect(url_for('reset_request'))
-#     form=ResetPasswordForm()
-#     if form.validate_on_submit():     
-#         hashed_password=bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-#         user.password=hashed_password
-#         db.session.commit()  
-#         flash('Your password changed')
-#         return redirect(url_for('login'))
+@app.route('/reset_password',methods=['GET','POST'])
+def reset_request():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    form=RequestResetForm()
+    if form.validate_on_submit():
+        email=form.email.data
+        user=User.query.filter_by(email=email).first()
+        send_reset_email(user)
+        flash('An email has been sent with instructions to reset your password','success')
+        return redirect(url_for('login'))
+    return render_template('blog/reset_request.html',title="reset password",form=form)
+@app.route('/reset_password/<token>',methods=['GET','POST'])
+def reset_token(token):
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    user=User.verify_reset_token(token)
+    if user is None:
+        flash('this is an invalid token or expired token','danger')
+        return redirect(url_for('reset_request'))
+    form=ResetPasswordForm()
+    if form.validate_on_submit():     
+        hashed_password=bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user.password=hashed_password
+        db.session.commit()  
+        flash('Your password changed')
+        return redirect(url_for('login'))
         
-#     return render_template('blog/reset_token.html',title='Reset password',form=form)
+    return render_template('blog/reset_token.html',title='Reset password',form=form)
 
-# # end of forgot password verification
+# end of forgot password verification
 
 
 
