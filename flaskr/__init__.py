@@ -33,4 +33,4 @@ login_manager.init_app(app)
 
 
 
-from flaskr import app
+import  app
