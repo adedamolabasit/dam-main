@@ -148,5 +148,5 @@ class Newsletter(db.Model):
             return None
         return User.query.get(user_id)
 
-
+db.create_all()
 
