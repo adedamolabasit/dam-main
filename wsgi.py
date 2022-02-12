@@ -1,4 +1,4 @@
-from flaskr.app import app
+from flaskr import app
 
 
 if __name__=="__main__":
