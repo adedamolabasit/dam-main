@@ -30,15 +30,15 @@ class Controller(ModelView):
     def not_auth(self):
         return " you are not authorized to use the admin dashboard "
 
-admin.add_view(Controller(User,db.session))
-admin.add_view(Controller(Blog,db.session))
-admin.add_view(Controller(Home,db.session))
-admin.add_view(Controller(Knowledge,db.session))
-admin.add_view(Controller(Paragraph,db.session))
-admin.add_view(Controller(Post,db.session))
-admin.add_view(Controller(PendUser,db.session))
-admin.add_view(Controller(Comment,db.session))
-admin.add_view(Controller(Like,db.session))
+admin.add_view(ModelView(User,db.session))
+admin.add_view(ModelView(Blog,db.session,name='blogs'))
+admin.add_view(ModelView(Home,db.session))
+admin.add_view(ModelView(Knowledge,db.session))
+admin.add_view(ModelView(Paragraph,db.session))
+admin.add_view(ModelView(Post,db.session))
+admin.add_view(ModelView(PendUser,db.session))
+admin.add_view(ModelView(Comment,db.session))
+admin.add_view(ModelView(Like,db.session))
 
 
 
