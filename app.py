@@ -508,7 +508,7 @@ def create_home():
     if request.method == 'POST':
         headings=request.form.get('headings',None)
         details=request.form.get('details',None)
-        home=Home(headings=headings,details=details)
+        home=Home1(headings=headings,details=details)
         db.session.add(home)
         db.session.commit()
     return render_template('admin/home.html')
