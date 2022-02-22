@@ -10,7 +10,7 @@ import os
 
 
 app=Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:Nautilus5he!@localhost:5432/akdablog"
+app.config["DATABASE_URI"] = "postgresql://postgres:Nautilus5he!@localhost:5432/akdablog"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['MAIL_SERVER']='smtp.googlemail.com'
 app.config['MAIL_PORT']=465
