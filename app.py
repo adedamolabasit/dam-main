@@ -1,7 +1,7 @@
 from datetime import date
 from werkzeug.utils import secure_filename
 from flask import render_template,request,abort,redirect,url_for,flash,jsonify
-from flaskr.models import Blog,Home,Knowledge,Post,Paragraph,User,PendUser,Comment,Like,Newsletter
+from flaskr.models import Blog,Home1,Home2,Home3,Home4,Home5,Home6,Knowledge,Post,Paragraph,User,PendUser,Comment,Like,Newsletter
 from werkzeug.utils import secure_filename
 from sqlalchemy import desc 
 import os
@@ -32,7 +32,11 @@ class Controller(ModelView):
 
 admin.add_view(ModelView(User,db.session))
 admin.add_view(ModelView(Blog,db.session,name='blogs'))
-admin.add_view(ModelView(Home,db.session))
+admin.add_view(ModelView(Home1,db.session))
+admin.add_view(ModelView(Home2,db.session))
+admin.add_view(ModelView(Home3,db.session))
+admin.add_view(ModelView(Home4,db.session))
+admin.add_view(ModelView(Home5,db.session))
 admin.add_view(ModelView(Knowledge,db.session))
 admin.add_view(ModelView(Paragraph,db.session))
 admin.add_view(ModelView(Post,db.session))
@@ -314,21 +318,42 @@ def create_post():
 
 @app.route('/',methods=['GET'])
 def home():
-    query1=Home.query.filter_by(id=1).first()
-    query2=Home.query.filter_by(id=2).first()
-    query3=Home.query.filter_by(id=5).first()
-    query4=Home.query.filter_by(id=4).first()
-    query5=Home.query.filter_by(id=5).first()
-    query={
-        'query1':query1,
-        'query2':query2,
-        'query3':query3,
-        'query4':query4,
-        'query5':query5
+    # first pararagrph
+    query1=Home1.query.filter_by(id=1).first()
+    # end
+    # second paragraph
+    para1=Home2.query.filter_by(id=1).first()
+    para2=Home2.query.filter_by(id=2).first()
+    para3=Home2.query.filter_by(id=3).first()
+    para4=Home2.query.filter_by(id=4).first()
+    query2={
+        'query1':para1,
+        'query2':para2,
+        'query3':para3,
+        'query4':para4,
     }
-   
-    
-    return render_template('blog/home.html',query=query)
+    # end
+    #third paragraph
+    query4=Home4.query.filter_by(id=1).first()
+    # end
+    #fourth paragraph
+    mid1=Home3.query.filter_by(id=1).first()
+    mid2=Home3.query.filter_by(id=2).first()
+    mid3=Home3.query.filter_by(id=5).first()
+    mid4=Home3.query.filter_by(id=4).first()
+    mid5=Home3.query.filter_by(id=5).first()
+    query3={
+        'query1':mid1,
+        'query2':mid2,
+        'query3':mid3,
+        'query4':mid4,
+        'query5':mid5
+    }
+    #end
+    # fifth paragraph
+    query5=Home5.query.filter_by(id=1).first()
+    # end
+    return render_template('blog/home.html',query1=query1,query2=query2,query3=query3,query4=query4,query5=query5)
 
 @app.route('/test')
 def test():
@@ -474,6 +499,23 @@ def newsletter_token(token):
 @app.route('/watch')
 def watch():
     return render_template('blog/watch.html')
+
+
+
+# admin page 
+@app.route('/home/admin',methods=['GET','POST'])
+def create_home():
+    if request.method == 'POST':
+        headings=request.form.get('headings',None)
+        details=request.form.get('details',None)
+        home=Home(headings=headings,details=details)
+        db.session.add(home)
+        db.session.commit()
+    return render_template('admin/home.html')
+
+
+
+
 
 
 db.create_all()

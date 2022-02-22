@@ -1,0 +1,37 @@
+{% extends 'blog/blog1.html' %}
+{% block content %}
+
+                <div class="contact_form">
+                    <h2 class="f_p f_size_22 t_color3 f_600 l_height28 mt_100 mb_40">Leave a Message</h2>
+                    <form action="" class="contact_form_box" method="post" id="contactForm" novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group text_box">
+                                    <input type="text" id="name" name="headings" placeholder="Your Name">
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-6">
+                                <div class="form-group text_box">
+                                    <input type="text" name="email" id="email" placeholder="Your Email">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group text_box">
+                                    <input type="text" id="subject" name="subject" placeholder="Subject">
+                                </div>
+                            </div> -->
+                            <div class="col-lg-12">
+                                <div class="form-group text_box">
+                                    <textarea name="details" id="message" cols="30" rows="10" placeholder="Details"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn_three">Post</button>
+                    </form>
+                    <div id="success">Your message succesfully sent!</div>
+                    <div id="error">Opps! There is something wrong. Please try again</div>
+                </div>
+            </div>
+        </section>
+
+     {% endblock %}

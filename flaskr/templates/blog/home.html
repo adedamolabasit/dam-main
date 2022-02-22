@@ -5,10 +5,10 @@
                 <div class="section_container">
                     <div class="intro">
                         <div class=" intro_content">
-                            <h1 class="f_700 f_size_50 w_color f_p">Your valuable Helping hand</h1>
+                            <h1 class="f_700 f_size_50 w_color f_p">{{ query1.headings }}</h1>
                             <p class="w_color f_size_18">
                                 <!-- Dedicated and efficient full stack developer with 3+ years experience in application layers, presentation layers, and databases. Certified in both F/E and B/E technologies. Seeking to further improve HTML5 and CSS3 skills as the future full stack developer at Atmospheric Solutions.!</p> -->
-                                Netleaf software has experience in providing custom-made application services that boast with tech tools and professionally designed web applications. We have been serving the most efficient and effective development services based on your industry. So, let's continue reading how these custom application development services improve your ROI.
+                                {{ query1.details }}
                                 <form class="mailchimp" method="post">
                                 <div class="input-group subcribes">
                                     <input type="text" name="EMAIL" class="form-control memail" placeholder="saasland@gmail.com">
@@ -21,38 +21,38 @@
                     </div>
                 </div>
             </div>
-            <img class="shap_img" src="img/home-10/shape.png" alt="">
+            <img class="shap_img" src="static/img/home-10/shape.png" alt="">
             <div class="animation_img wow fadeInUp" data-wow-delay="0.3s">
-                <img src="img/home-10/dashboard_img.png" alt="">
+                <img src="static/img/home-10/dashboard_img.png" alt="">
             </div>
         </section>
 
         <section class="saas_features_area_two">
             <div class="container">
                 <div class="sec_title text-center mb_70 wow fadeInUp" data-wow-delay="0.3s">
-                    <h2 class="f_p f_size_30 l_height50 f_600 t_color">Awesome Features</h2>
-                    <p class="f_400 f_size_16">When you buy a dedicated server, you get a machine with resources<br> solely allocated to your business.</p>
+                    <h2 class="f_p f_size_30 l_height50 f_600 t_color">{{ query2.query1.headings }}</h2>
+                    <p class="f_400 f_size_16">{{ query2.query1.details }}</p>
                 </div>
                 <div class="row mb_30">
                     <div class="col-lg-4 col-sm-6">
                         <div class="saas_features_item text-center wow fadeInUp" data-wow-delay="0.3s">
-                            <img src="img/home-10/icon1.png" alt="">
-                            <h4 class="f_size_20 f_p t_color f_500">Awesome design</h4>
-                            <p class="f_400 f_size_15 mb-0">Tosser blag bubble and squeak up the duff A bit of how's your father blatant morish char cuppa.!</p>
+                            <img src="static/img/home-10/icon1.png" alt="">
+                            <h4 class="f_size_20 f_p t_color f_500">{{ query2.query2.headings }}</h4>
+                            <p class="f_400 f_size_15 mb-0">{{ query2.query2.details }}</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <div class="saas_features_item text-center wow fadeInUp" data-wow-delay="0.5s">
-                            <img src="img/home-10/icon2.png" alt="">
-                            <h4 class="f_size_20 f_p t_color f_500">Easy Customize</h4>
-                            <p class="f_400 f_size_15 mb-0">Tosser blag bubble and squeak up the duff A bit of how's your father blatant morish char cuppa.!</p>
+                            <img src="static/img/home-10/icon2.png" alt="">
+                            <h4 class="f_size_20 f_p t_color f_500">{{ query2.query3.headings }}</h4>
+                            <p class="f_400 f_size_15 mb-0">{{ query2.query3.details }}</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <div class="saas_features_item text-center wow fadeInUp" data-wow-delay="0.7s">
-                            <img src="img/home-10/icon3.png" alt="">
-                            <h4 class="f_size_20 f_p t_color f_500">Extreme Security</h4>
-                            <p class="f_400 f_size_15 mb-0">Tosser blag bubble and squeak up the duff A bit of how's your father blatant morish char cuppa.!</p>
+                            <img src="static/img/home-10/icon3.png" alt="">
+                            <h4 class="f_size_20 f_p t_color f_500">{{ query2.query4.headings }}</h4>
+                            <p class="f_400 f_size_15 mb-0">{{ query2.query4.details }}</p>
                         </div>
                     </div>
                 </div>
@@ -63,8 +63,8 @@
         <section class="saas_service_area sec_pad">
             <div class="container">
                 <div class="sec_title text-center mb_70 wow fadeInUp" data-wow-delay="0.3s">
-                    <h2 class="f_p f_size_30 l_height50 f_600 t_color">Whom RedSwitches is for?</h2>
-                    <p class="f_400 f_size_16">Well at public school cheeky bugger grub burke codswallop smashing only a quid<br> pardon you lavatory chip shop, geeza loo horse play.</p>
+                    <h2 class="f_p f_size_30 l_height50 f_600 t_color">{{ query3.headings }}</h2>
+                    <p class="f_400 f_size_16">{{ query3.details}}.</p>
                 </div>
                 <div class="row saas_service_item">
                     <div class="col-lg-6">
@@ -75,8 +75,10 @@
                     <div class="col-lg-6 d-flex align-items-center">
                         <div class="saas_service_content pr_100 wow fadeInRight" data-wow-delay="0.7s">
                             <div class="icon icon_one"><i class="ti-control-shuffle"></i></div>
-                            <h4 class="f_500 f_p t_color">{{ query.query1.headings }}</h4>
-                            <p class="f_p f_400">{{ query.query1.details}}</p>
+                            <h4 class="f_500 f_p t_color">{{ query3.query1.headings }}</h4>
+                            <p class="f_p f_400">
+                               {{ query3.query1.details }}
+                                </p>
                             <a href="#" class="gr_btn"><span class="text">Learn More</span></a>
                         </div>
                     </div>
@@ -90,8 +92,10 @@
                     <div class="col-lg-6 d-flex align-items-center">
                         <div class="saas_service_content pl_100 wow fadeInLeft" data-wow-delay="0.6s">
                             <div class="icon icon_two"><i class="ti-split-v-alt"></i></div>
-                            <h4 class="f_500 f_p t_color">{{ query.query2.headings }}</h4>
-                            <p class="f_p f_400">{{ query.query2.details}}</p>
+                            <h4 class="f_500 f_p t_color">{{ query3.query2.headings }}</h4>
+                            <p class="f_p f_400">
+                               {{ query3.query2.details }}
+                            </p>
                             <a href="#" class="gr_btn"><span class="text">Learn More</span></a>
                         </div>
                     </div>
@@ -105,8 +109,10 @@
                     <div class="col-lg-6 d-flex align-items-center">
                         <div class="saas_service_content pr_100 wow fadeInRight" data-wow-delay="0.6s">
                             <div class="icon icon_three"><i class="ti-bar-chart-alt"></i></div>
-                            <h4 class="f_500 f_p t_color">{{ query.query3.headings }}</h4>
-                            <p class="f_p f_400">{{ query.query3.details}}</p>
+                            <h4 class="f_500 f_p t_color">{{ query3.query3.headings }} </h4>
+                            <p class="f_p f_400">
+                               {{ query3.query3.details }}
+                            </p>
                             <a href="#" class="gr_btn"><span class="text">Learn More</span></a>
                         </div>
                     </div>
@@ -120,8 +126,10 @@
                     <div class="col-lg-6 d-flex align-items-center">
                         <div class="saas_service_content pl_100 wow fadeInLeft" data-wow-delay="0.4s">
                             <div class="icon icon_four"><i class="ti-settings"></i></div>
-                            <h4 class="f_500 f_p t_color">{{ query.query4.headings }}</h4>
-                            <p class="f_p f_400">{{ query.query4.details }}</p>
+                            <h4 class="f_500 f_p t_color">{{ query3.query4.headings}}</h4>
+                            <p class="f_p f_400">
+                                {{ query3.query4.details }}
+                            </p>
                             <a href="#" class="gr_btn"><span class="text">Learn More</span></a>
                         </div>
                     </div>
@@ -135,8 +143,8 @@
                     <div class="col-lg-6 d-flex align-items-center">
                         <div class="saas_service_content pl_100 wow fadeInLeft" data-wow-delay="0.4s">
                             <div class="icon icon_four"><i class="ti-settings"></i></div>
-                            <h4 class="f_500 f_p t_color">{{ query.query5.headings }}</h4>
-                            <p class="f_p f_400">{{ query.query5.details }}</p>
+                            <h4 class="f_500 f_p t_color">{{ query3.query5.headings }}</h4>
+                            <p class="f_p f_400">{{ query3.query5.details }}</p>
                             <a href="#" class="gr_btn"><span class="text">Learn More</span></a>
                         </div>
                     </div>
@@ -147,8 +155,8 @@
         <section class="sass_partner_logo_area sec_pad">
             <div class="container">
                 <div class="sec_title text-center wow fadeInUp" data-wow-delay="0.3s">
-                    <h2 class="f_p f_size_30 l_height50 f_600 t_color">We Offer Around 100 Applications</h2>
-                    <p class="f_400 f_size_16">Well at public school cheeky bugger grub burke codswallop smashing only a quid<br> pardon you lavatory chip shop, geeza loo horse play.</p>
+                    <h2 class="f_p f_size_30 l_height50 f_600 t_color">{{ query5.headings }}</h2>
+                    <p class="f_400 f_size_16">{{ query5.details }}.</p>
                 </div>
                 <div class="partner_logo_area_four">
                     <div class="row partner_info">

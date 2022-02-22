@@ -70,10 +70,31 @@ class PendUser(db.Model):
 
 
 
-class Home(db.Model):
+class Home1(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     headings=db.Column(db.String(),nullable=True)
     details=db.Column(db.Text,nullable=True)
+class Home2(db.Model):
+    id=db.Column(db.Integer,primary_key=True)
+    headings=db.Column(db.String(),nullable=True)
+    details=db.Column(db.Text,nullable=True)
+class Home3(db.Model):
+    id=db.Column(db.Integer,primary_key=True)
+    headings=db.Column(db.String(),nullable=True)
+    details=db.Column(db.Text,nullable=True)
+class Home4(db.Model):
+    id=db.Column(db.Integer,primary_key=True)
+    headings=db.Column(db.String(),nullable=True)
+    details=db.Column(db.Text,nullable=True)
+class Home5(db.Model):
+    id=db.Column(db.Integer,primary_key=True)
+    headings=db.Column(db.String(),nullable=True)
+    details=db.Column(db.Text,nullable=True)
+class Home6(db.Model):
+    id=db.Column(db.Integer,primary_key=True)
+    headings=db.Column(db.String(),nullable=True)
+    details=db.Column(db.Text,nullable=True)
+    
 
 
 class Blog(db.Model):
